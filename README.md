@@ -1,28 +1,37 @@
-# Student_Assignment_Hub_SystemDesign
+## Student_Assignment_Hub_SystemDesign_HLD
 
-# Student Assignment Hub
-1. Features Expectation
+
+
+# Features Expectation
 
 A. Function requirement
 1. Student can submit their submission for assignmetn
 2. Faculties can post assignment
 3. Students will get Email for their succesful submissions
+
 B. Feature wil not be covered
+
 1.real time collabration feature
 R2. ealt time chat feature
+
 C. who will use :
 Faculties , students, IT team
+
 D. what is scale of the system ?
 10,000 stuednets, 200 Faculties
+
 E. Usage patteern :
 Hight activity near assignemmnt deadline
 *
 
-Estimation :
+# Estimation :
+
 A. Read/ Write ratio : read 70% and write 30%
+
 B. Throughtput Write QPS :
 7000 submision * 2 attempss = 14,0000 submissions
 2 write QPS (Uniform request) === 100 QPS (Burst request)
+
 Read QPS
 2(submission attempt) * 70/30 == 5 Read QPS (uniform reqeust) === 300 QPS (Burst
 request)
@@ -37,8 +46,10 @@ Read latency == 200 ms
 Write latency === 500 ms
 
 Design Goal
+
 A. Latency and Throughput
 low latency (elasticcache and CDN) and high throughput
+
 B. Consistency vs Availablity
 For the Student Assignment Hub, strong consistency is more important than
 availability because the accuracy and integrity of assignment submissions and
@@ -46,27 +57,41 @@ grading data are paramount. While high availability is still crucial, the potent
 issues arising from inconsistent data (such as submission or grading disputes)
 justify prioritizing consistency to ensure the system operates reliably and accurately
 in all circumstances
-High Level Design
+
+# High Level Design
+
 A. API Design
 GET : get all assignment
 v1/assigment :
+
 POST: submit a assignment
 v1/assignment :
+
 PUT : to update the assignment
 v1/assignment/{assignment_id}:
+
 DELETE: delete a specific assignment
 v1/assignment/(assignment_id):
+
 GET : get a specific assignemnt
 v1/assignment/{assignment_id}:
+
 Submission: submit submission for specific assignment
 v1/assignment/{assignment_id}/submission
+
 Databases Schema
+
 A. Realtional Database
 User, Assignment, Grades
+
 B. Storage service : submission zip
+
 C. Non- realtional databse (key-value) gather log on Submission
 Deep Dive into System Architecture
----### **VPC Configuration**
+
+# Deep Dive
+
+**VPC Configuration**
 - **VPC:** All services are present within the default VPC. The VPC contains multiple
 subnets, with each subnet located in a specific Availability Zone (AZ).
 - **Domain Name Setup:**
@@ -153,7 +178,9 @@ deployment of resources.
 - **Packer:** Packer is used for automating the creation of machine images.
 - **CI/CD Pipeline:** The continuous integration and continuous deployment (CI/CD)
 pipeline ensures smooth and consistent development and deployment processes.
-Justify
+
+# Justify
+
 This architecture is designed to meet the needs of the Student Assignment Hub,
 offering scalability, strong security, high availability, and an enhanced user
 experience. Every decision, from the choice of AWS services to the implementation of
