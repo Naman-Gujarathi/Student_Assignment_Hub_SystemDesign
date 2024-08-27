@@ -17,6 +17,7 @@ D. what is scale of the system ?
 E. Usage patteern :
 Hight activity near assignemmnt deadline
 *
+
 Estimation :
 A. Read/ Write ratio : read 70% and write 30%
 B. Throughtput Write QPS :
@@ -25,13 +26,16 @@ B. Throughtput Write QPS :
 Read QPS
 2(submission attempt) * 70/30 == 5 Read QPS (uniform reqeust) === 300 QPS (Burst
 request)
+
 C. Storage:
 10000 (students)* 40(Submissions per semeneter) * 2 (submit attempts) * 5MB
 (submission size) == 2,000,000 MB === 2 TB
 Metadata + logs ==100 GB === 2 TB
+
 D. Latency
 Read latency == 200 ms
 Write latency === 500 ms
+
 Design Goal
 A. Latency and Throughput
 low latency (elasticcache and CDN) and high throughput
